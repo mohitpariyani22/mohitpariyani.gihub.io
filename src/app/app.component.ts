@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   id: number;
 
   // array of all items to be paged
-  private data: any[];
+  data: any[];
 
   private allItems: any[];
   // pager object
