@@ -1,0 +1,152 @@
+p,
+span {
+    color: #a3a3a3;
+}
+
+.main-hold {
+    background-color: #f6f6f6;
+    padding: 50px 30px;
+    // height: 100vh;
+}
+
+hr {
+    margin: 0 0 20px;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.redText {
+    color: red;
+    span.dot {
+        background: red;
+    }
+}
+
+.greenText {
+    color: green;
+    span.dot {
+        background: green;
+    }
+}
+
+.blueBg {
+    background-color: #fafbff;
+}
+
+.margBtm25 {
+    margin-bottom: 25px;
+}
+
+.list-view-wrap {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 20px 0;
+    @media(max-width: 768px) {
+        overflow-y: scroll;
+    }
+    .img-hold {
+        width: 100px;
+    }
+    .list-content {
+        .location-box {
+            margin: 10px 10px 0;
+        }
+    }
+    .common-width-list {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 0 11px;
+        &>p {
+            padding: 5px 12px;
+        }
+        .sort-icon {
+            margin-left: 5px;
+        }
+    }
+    .common-width-list3 {
+        flex: 1.1;
+    }
+    .common-width-list2 {
+        flex: 3.5;
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+        cursor: pointer;
+        .sort-icon {
+            margin-left: 5px;
+        }
+    }
+}
+
+.flex-evenly {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    @media(max-width: 768px) {
+        justify-content: start;
+    }
+}
+
+.footer {
+    background: #e7e8f0;
+    padding: 20px 15px;
+    margin: 0 -15px -15px;
+    text-align: right;
+    .btn-default {
+        width: 100px;
+        margin-right: 10px;
+        background: #9a9ba0;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding: 10px;
+    }
+    .btn-primary {
+        width: 130px;
+        background: #3d61ff;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+.glyphicon-chevron-up,
+.glyphicon-chevron-down {
+    font-size: 9px;
+}
+
+span.dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.result {
+    margin: 25px 0 20px 60px;
+}
+
+.form-group {
+    height: 70px;
+}
+
+.alert-danger {
+    background: transparent;
+    border: 0;
+    padding: 5px 0;
+    margin-bottom: 0;
+    color: red;
+}
+
+.activeClass {
+    background: #6b7dea;
+    color: #fff;
+    border-radius: 40px;
+    span {
+        color: #fff;
+    }
+}

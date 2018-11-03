@@ -1,0 +1,282 @@
+<div class="main-hold">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="search" class="form-control" id="searchText" name="searchText" placeholder="Search for user names..." (input)="searchFilter()" [(ngModel)]="searchText">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <input type="text" placeholder="0" id="pageSize" name="pageSize" class="form-control" [(ngModel)]="pageSize" (input)="pageSizeChange()">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span style="line-height: 2.5em;">Records per Page</span>
+            </div>
+
+            <div class="col-md-4">
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary" (click)="add(addTemplate)">Add <span class="glyphicon glyphicon-plus-sign" style="color:#fff;"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="list-view-wrap">
+            <div class="row" *ngIf="!noresult">
+                <div class="col-md-12">
+                    <div class="flex-evenly">
+                        <div class="common-width-list hover" (click)="sortnull('user',starBool,1)">
+                            <p [ngClass]="{'activeClass': id === 1 }">
+                                User
+                                <span class="glyphicon sort-icon" [ngClass]="reverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+                            </p>
+                        </div>
+                        <div class="common-width-list hover" (click)="sortnull('purchase',starBool,2)">
+                            <p [ngClass]="{'activeClass': id === 2 }">
+                                Purchase
+                                <span class="glyphicon sort-icon" [ngClass]="reverse0 ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+                            </p>
+                        </div>
+                        <div class="common-width-list hover" (click)="sortnull('commission',starBool,3)">
+                            <p [ngClass]="{'activeClass': id === 3 }">
+                                Commission
+                                <span class="glyphicon sort-icon" [ngClass]="reverse1 ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+                            </p>
+                        </div>
+                        <div class="common-width-list hover" (click)="sortnull('earnings',starBool,4)">
+                            <p [ngClass]="{'activeClass': id === 4 }">
+                                Earnings
+                                <span class="glyphicon sort-icon" [ngClass]="reverse2 ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+                            </p>
+                        </div>
+                        <div class="common-width-list hover" (click)="sortnull('status',starBool,5)">
+                            <p [ngClass]="{'activeClass': id === 5 }">
+                                Status
+                                <span class="glyphicon sort-icon" [ngClass]="reverse3 ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+                            </p>
+                        </div>
+                        <div class="common-width-list hover" (click)="sortnull('date',starBool,6)">
+                            <p [ngClass]="{'activeClass': id === 6 }">
+                                Date
+                                <span class="glyphicon sort-icon" [ngClass]="reverse4 ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+                            </p>
+                        </div>
+                        <div class="common-width-list hover">
+                            <p>
+                                <strong>Actions</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12" *ngFor="let item of data; let i=index">
+                    <div class="flex-evenly" [ngClass]="i%2 == 0 ? '' : 'blueBg'">
+                        <div class="common-width-list">
+                            <p>{{item.user}}</p>
+                        </div>
+                        <div class="common-width-list">
+                            <p>{{item.purchase}}</p>
+                        </div>
+                        <div class="common-width-list">
+                            <p>{{item.commission}}</p>
+                        </div>
+                        <div class="common-width-list">
+                            <p>{{item.earnings}}</p>
+                        </div>
+                        <div class="common-width-list">
+                            <p [ngClass]="item.status == 'Unverified' ? 'redText' : 'greenText'" class="">{{item.status}} <span class="dot"></span></p>
+                        </div>
+                        <div class="common-width-list">
+                            <p>{{item.date | date: 'dd/MM/yyyy'}}</p>
+                        </div>
+                        <div class="common-width-list">
+                            <p>
+                                <span class="glyphicon glyphicon-edit hover" (click)="edit(template,item)"></span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-trash hover" (click)="delete(item)"></span>
+                            </p>
+                            <!-- <p>{{data["actions"][i]}}</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="result"><span>showing {{currentCount}} of {{totalCount}} results</span></div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-right">
+                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                        <!-- <li [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a (click)="setPage(1)">First</a>
+                        </li> -->
+                        <!-- <li [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                        </li> -->
+                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                            <a (click)="setPage(page)">{{page}}</a>
+                        </li>
+                        <!-- <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                        </li> -->
+                        <!-- <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a (click)="setPage(pager.totalPages)">Last</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="noresult">
+            <div class="no-result">
+                <img src="../../assets/images/no-result.png" alt="">
+            </div>
+            <h3 class="text-center">No Result Found !!</h3>
+            <p class="text-center">Please refine your search </p>
+        </div>
+    </div>
+</div>
+
+<!-- Add Items  -->
+<ng-template #addTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add New Purchase</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="addFormSubmit(addForm)">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="User">User</label>
+                        <input type="text" autocomplete="off" placeholder="Enter name" maxlength="10" #user="ngModel" name="user" required class="form-control" (input)="userOnChange(editData.user)" [(ngModel)]="editData.user">
+                        <app-form-error [formControlData]="user" [formGroupData]="addForm"></app-form-error>
+                        <div class="alert alert-danger" *ngIf="userAvailable">
+                            Username already exists
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Date">Expiration Date</label>
+                        <input type="text" #date="ngModel" name="date" required class="form-control" [(ngModel)]="editData.date" placeholder="mm/dd/yy">
+                        <app-form-error [formControlData]="date" [formGroupData]="addForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Purchase">Purchase</label>
+                        <input type="number" max-length="10" #purchase="ngModel" name="purchase" required class="form-control" [(ngModel)]="editData.purchase">
+                        <app-form-error [formControlData]="purchase" [formGroupData]="addForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Earnings">Earnings</label>
+                        <input type="number" max-length="10" #earnings="ngModel" name="earnings" required class="form-control" [(ngModel)]="editData.earnings">
+                        <app-form-error [formControlData]="earnings" [formGroupData]="addForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Commission">Commission in %</label>
+                        <input type="number" #commission="ngModel" name="commission" required class="form-control" [(ngModel)]="editData.commission">
+                        <app-form-error [formControlData]="commission" [formGroupData]="addForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Status">Status</label>
+                        <select #status="ngModel" name="status" required class="form-control" [(ngModel)]="editData.status">
+                          <option value="Verified">VERIFIED</option>
+                          <option value="Unverified">UNVERIFIED</option>
+                        </select>
+                        <app-form-error [formControlData]="status" [formGroupData]="addForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="footer">
+                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- EO Add Items  -->
+
+
+<!-- Edit Items  -->
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Your Items</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="editFormSubmit(editForm)">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="User">User</label>
+                        <input type="text" autocomplete="off" #user="ngModel" name="user" required class="form-control" (input)="userOnChange(editData.user)" [(ngModel)]="editData.user">
+                        <app-form-error [formControlData]="user" [formGroupData]="editForm"></app-form-error>
+                        <div class="alert alert-danger" *ngIf="userAvailable">
+                            Username already exists
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Date">Expiration Date</label>
+                        <input type="text" #date="ngModel" name="date" required class="form-control" [(ngModel)]="editData.date" placeholder="mm/dd/yy">
+                        <app-form-error [formControlData]="date" [formGroupData]="editForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Purchase">Purchase</label>
+                        <input type="number" max-length="10" #purchase="ngModel" name="purchase" required class="form-control" [(ngModel)]="editData.purchase">
+                        <app-form-error [formControlData]="purchase" [formGroupData]="editForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Earnings">Earnings</label>
+                        <input type="number" max-length="10" #earnings="ngModel" name="earnings" required class="form-control" [(ngModel)]="editData.earnings">
+                        <app-form-error [formControlData]="earnings" [formGroupData]="editForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Commission">Commission in %</label>
+                        <input type="text" #commission="ngModel" name="commission" required class="form-control" [(ngModel)]="editData.commission">
+                        <app-form-error [formControlData]="commission" [formGroupData]="editForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Status">Status</label>
+                        <select #status="ngModel" name="status" required class="form-control" [(ngModel)]="editData.status">
+                              <option value="Verified">VERIFIED</option>
+                              <option value="Unverified">UNVERIFIED</option>
+                            </select>
+                        <app-form-error [formControlData]="status" [formGroupData]="editForm"></app-form-error>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="footer">
+                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- EO Edit Items  -->

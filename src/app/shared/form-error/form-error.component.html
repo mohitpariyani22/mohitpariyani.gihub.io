@@ -1,0 +1,7 @@
+<div class="alert alert-danger" [ngClass]="{'errorDrop':CustomClass}" *ngIf="formControlData?.invalid && (formControlData?.dirty || formControlData?.touched ||formGroupData?.submitted)">
+    <p *ngIf="formControlData.errors.required">{{requiredMsg?requiredMsg:'This field is required'}}*</p>
+    <p *ngIf="formControlData.errors.pattern&&!formControlData.errors.email">{{patternMsg?patternMsg:'Enter valid pattern'}}</p>
+    <p *ngIf="formControlData.errors.email&&!formControlData.errors.required">{{emailMsg?emailMsg:'Enter valid email'}}</p>
+    <p *ngIf="formControlData.errors.maxlength&&!formControlData.errors.required">{{maxlengthMsg?maxlengthMsg:'This field reached maximum character limit'}}</p>
+    <p *ngIf="formControlData.errors.minlength&&!formControlData.errors.required&&!formControlData.errors.pattern">{{minlengthMsg?minlengthMsg:'This field is too short'}}</p>
+</div>

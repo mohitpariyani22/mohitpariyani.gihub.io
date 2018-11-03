@@ -1,0 +1,110 @@
+[{
+        "user": "UserB",
+        "purchase": "20000",
+        "commission": "0.49",
+        "earnings": "1100",
+        "status": "Verified",
+        "date": "06/21/2018",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserA",
+        "purchase": "10000",
+        "commission": "0.40",
+        "earnings": "500",
+        "status": "Verified",
+        "date": "10/08/2018",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+
+    {
+        "user": "UserE",
+        "purchase": "50000",
+        "commission": "0.25",
+        "earnings": "2400",
+        "status": "verified",
+        "date": "10/11/2016",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserZ",
+        "purchase": "34000",
+        "commission": "0.25",
+        "earnings": "3000",
+        "status": "Unverified",
+        "date": "10/22/2017",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserF",
+        "purchase": "34000",
+        "commission": "0.25",
+        "earnings": "330",
+        "status": "verified",
+        "date": "10/11/2016",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserC",
+        "purchase": "30000",
+        "commission": "0.545",
+        "earnings": "3000",
+        "status": "Unverified",
+        "date": "11/28/2018",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserL",
+        "purchase": "40050",
+        "commission": "0.25",
+        "earnings": "3000",
+        "status": "Unverified",
+        "date": "10/22/2017",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserO",
+        "purchase": "960000",
+        "commission": "0.25",
+        "earnings": "3200",
+        "status": "verified",
+        "date": "10/11/2016",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserD",
+        "purchase": "40000",
+        "commission": "0.25",
+        "earnings": "3000",
+        "status": "Unverified",
+        "date": "10/22/2017",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserP",
+        "purchase": "50050",
+        "commission": "0.25",
+        "earnings": "3010",
+        "status": "verified",
+        "date": "10/11/2016",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserN",
+        "purchase": "85000",
+        "commission": "0.25",
+        "earnings": "3000",
+        "status": "verified",
+        "date": "10/11/2016",
+        "actions": { "edit": "true", "delete": "true" }
+    },
+    {
+        "user": "UserR",
+        "purchase": "32000",
+        "commission": "0.25",
+        "earnings": "3230",
+        "status": "verified",
+        "date": "10/11/2016",
+        "actions": { "edit": "true", "delete": "true" }
+    }
+]
